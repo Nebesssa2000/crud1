@@ -1,32 +1,53 @@
 package web.service;
 
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import web.dao.UserDao;
 import web.model.User;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-public class UserServicrImp implements UserService{
+@FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
+@Service
+public class UserServiceImp implements UserService{
+
+    UserDao userDao;
+
+    @Autowired
+    public UserServiceImp(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    @Transactional
     @Override
     public List<User> index() {
-        return null;
+        return userDao.index();
     }
 
+    @Transactional
     @Override
-    public User show(int id) {
-        return null;
+    public User show(long id) {
+        return userDao.show(id);
     }
 
+    @Transactional
     @Override
     public void save(User user) {
-
+        userDao.save(user);
     }
 
+    @Transactional
     @Override
-    public void update(int id, User updatedUser) {
-
+    public void update(long id, User user) {
+        userDao.update(user);
     }
 
+    @Transactional
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
 
     }
 }
