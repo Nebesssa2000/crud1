@@ -36,18 +36,30 @@ public class Dispetcher extends AbstractAnnotationConfigDispatcherServletInitial
 //        dynamic.addMappingForUrlPatterns(null,true,"/*");
 //        registerHiddenFieldFilter(aServletContext);
 //    }
+
+    @Override
+    public void onStartup(ServletContext aServletContext) throws ServletException {
+        super.onStartup(aServletContext);
+        registerHiddenFieldFilter(aServletContext);
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        FilterRegistration.Dynamic filterRegistration = aServletContext
+                .addFilter("characterEncodingFilter", characterEncodingFilter);
+        filterRegistration.addMappingForUrlPatterns(null, false, "/*");
+    }
 //
 //    private void registerHiddenFieldFilter(ServletContext aContext) {
 //        aContext.addFilter("hiddenHttpMethodFilter", new HiddenHttpMethodFilter())
 //                .addMappingForUrlPatterns(null ,true, "/*");
 //    }
 
-    @Override
-    public void onStartup(ServletContext aServletContext) throws ServletException {
-        super.onStartup(aServletContext);
-        registerCharacterEncodingFilter(aServletContext);
-        registerHiddenFieldFilter(aServletContext);
-    }
+//    @Override
+//    public void onStartup(ServletContext aServletContext) throws ServletException {
+//        super.onStartup(aServletContext);
+//        registerCharacterEncodingFilter(aServletContext);
+//        registerHiddenFieldFilter(aServletContext);
+//    }
 
     private void registerHiddenFieldFilter(ServletContext aContext) {
         aContext.addFilter("hiddenHttpMethodFilter",

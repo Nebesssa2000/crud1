@@ -13,9 +13,9 @@
   <input type="text" th:field="*{name}" id="name"/>
   <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
 
-  <lable for="lastName"> lastName: </lable>
-  <input type="text" th:field="*{lastName}" id="lastName"/>
-  <div style="color:red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Lastname error</div>
+  <lable for="last_name"> last_name: </lable>
+  <input type="text" th:field="*{lastName}" id="last_name"/>
+  <div style="color:red" th:if="${#fields.hasErrors('last_name')}" th:errors="*{lastName}">Lastname error</div>
 
   <lable for="email"> email: </lable>
   <input type="text" th:field="*{email}" id="email"/>
