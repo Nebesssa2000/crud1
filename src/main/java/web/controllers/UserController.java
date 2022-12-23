@@ -8,9 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+
+import web.model.Author;
 import web.model.User;
 import web.service.UserService;
 
+@Author(name = "Victor Gabbasov", dateOfCreation = 2022)
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
 @Controller
 @RequestMapping("/users")

@@ -39,7 +39,7 @@ public class User implements Serializable {
 
     @Column(name = "email")
     @NotEmpty(message = "Email should not be empty")
-    @Email
+    @Email(message = "This is insert, not email")
     String email;
 
     public User(String name, String lastName, String email) {

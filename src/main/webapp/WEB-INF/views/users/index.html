@@ -8,7 +8,7 @@
 <body>
 
 <form>
-<table table="1">
+<table th:border="1">
   <tr>
     <th>Id</th>
     <th>Name</th>
@@ -25,12 +25,11 @@
 
   </tr>
 </table>
-  <input type="submit" value="Update!"/>
 </form>
 <br/>
 <hr/>
 
-<a href="/users/new">Create new user</a>
-
+<a href="/users/new">
+  <input type="submit" value="Create new user"/></a>
 </body>
 </html>
